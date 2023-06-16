@@ -7,14 +7,15 @@ import javax.persistence.*;
 
 @Entity
 @Data @NoArgsConstructor
-public class Ticket {
-
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String ticketNumber;
-    @OneToOne
+
+    private String categoryValue;
+
+    @ManyToOne
+    @JoinColumn(name="seat_id")
     private Seat seat;
-    @OneToOne
-    private Passenger passenger;
+
 }
