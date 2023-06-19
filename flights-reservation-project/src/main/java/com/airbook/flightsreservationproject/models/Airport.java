@@ -1,21 +1,21 @@
 package com.airbook.flightsreservationproject.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Data
-public class Airport {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@NoArgsConstructor
+@Table(name = "airports")
+public class Airport extends BaseEntity{
 
-    @OneToMany(mappedBy = "departureAirport")
+    @OneToMany(mappedBy = "departureAirport", cascade = CascadeType.ALL)
     private Set<Flight> departureFlights;
 
-    @OneToMany(mappedBy = "arrivalAirport")
+    @OneToMany(mappedBy = "arrivalAirport", cascade = CascadeType.ALL)
     private Set<Flight> arrivalFlights;
 
     private  String name;

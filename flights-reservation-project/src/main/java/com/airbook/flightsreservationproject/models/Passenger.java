@@ -9,17 +9,18 @@ import java.util.Set;
 
 @Entity
 @Data @NoArgsConstructor
-public class Passenger {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "passengers")
+public class Passenger extends BaseEntity{
 
     private String name;
     private String passportNumber;
 
-    @OneToOne
+    @OneToOne(mappedBy = "passenger", cascade = CascadeType.ALL)//non-owning side
     private Ticket tickets;
+//
+//    @OneToMany(mappedBy = "passenger")
+//    private Set<Booking> bookings;
+//
 
-    @OneToMany(mappedBy = "passenger")
-    private Set<Booking> bookings;
 }
+// parent е класа който има референциа към child класа

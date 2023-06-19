@@ -9,10 +9,9 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "flights")
+public class Flight extends BaseEntity{
+
 
     @ManyToOne
     @JoinColumn(name = "airline_id",nullable = false)

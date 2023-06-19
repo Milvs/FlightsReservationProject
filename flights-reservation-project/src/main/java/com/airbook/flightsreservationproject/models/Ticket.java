@@ -6,15 +6,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Data @NoArgsConstructor
-public class Ticket {
+@Data
+@NoArgsConstructor
+@Table(name = "tickets")
+public class Ticket extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
     private String ticketNumber;
+
     @OneToOne
+    @JoinColumn(name = "seat_id")
     private Seat seat;
+
     @OneToOne
+    @JoinColumn(name = "passenger_id")
     private Passenger passenger;
+
+//    @OneToOne
+//    @JoinColumn(name = "ticket")
+//    private Passenger passenger;
 }

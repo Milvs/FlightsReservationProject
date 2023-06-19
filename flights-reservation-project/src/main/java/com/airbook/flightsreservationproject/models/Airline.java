@@ -1,6 +1,7 @@
 package com.airbook.flightsreservationproject.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,13 +9,13 @@ import java.util.Set;
 
 @Entity
 @Data @NoArgsConstructor
-public class Airline {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "airlines")
+public class Airline extends BaseEntity{
 
-    @OneToMany(mappedBy = "airline")
-    Set<Flight> flights;
+
+
+    @OneToMany(mappedBy = "airline", cascade = CascadeType.ALL)
+    private Set<Flight> flights;
 
     private String name;
     private String country;

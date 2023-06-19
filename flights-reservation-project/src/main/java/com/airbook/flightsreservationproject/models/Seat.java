@@ -8,18 +8,20 @@ import java.util.Set;
 
 @Entity
 @Data @NoArgsConstructor
-public class Seat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Table(name = "seats")
+public class Seat extends BaseEntity{
+
 
     private String seatNumber;
 
-    @OneToMany(mappedBy = "seat")
+    @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
+    private Ticket ticket;
+
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
     private Set<Flight> flights;
 
-    @OneToMany(mappedBy = "seat")
-    private Set<Seat> seat;
+//    @OneToMany(mappedBy = "seat")
+//    private Set<Seat> seat;
 
 
 }

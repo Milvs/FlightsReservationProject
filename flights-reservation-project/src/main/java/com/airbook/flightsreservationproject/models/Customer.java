@@ -10,15 +10,14 @@ import java.util.Set;
 @Entity
 @Table(name = "customers")
 @Data @NoArgsConstructor
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Customer extends BaseEntity {
+
 
     private String username;
     private String password;
+    private String email;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Booking> bookings;
 
 

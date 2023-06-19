@@ -7,10 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Data @NoArgsConstructor
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Table(name = "categories")
+public class Category extends BaseEntity {
+
 
     private String categoryValue;
 
