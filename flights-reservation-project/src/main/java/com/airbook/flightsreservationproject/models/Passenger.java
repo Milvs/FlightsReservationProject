@@ -8,19 +8,20 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Data @NoArgsConstructor
+@Data
+@NoArgsConstructor
 @Table(name = "passengers")
-public class Passenger extends BaseEntity{
+public class Passenger extends BaseEntity {
 
     private String name;
     private String passportNumber;
 
     @OneToOne(mappedBy = "passenger", cascade = CascadeType.ALL)//non-owning side
     private Ticket tickets;
-//
-//    @OneToMany(mappedBy = "passenger")
-//    private Set<Booking> bookings;
-//
+
+    @OneToMany(mappedBy = "passenger",cascade = CascadeType.ALL)
+    private Set<Booking> bookings;
+
 
 }
 // parent е класа който има референциа към child класа

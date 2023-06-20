@@ -1,6 +1,6 @@
 package com.airbook.flightsreservationproject.models;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,8 +10,6 @@ import java.util.Set;
 @Data @NoArgsConstructor
 @Table(name = "seats")
 public class Seat extends BaseEntity{
-
-
     private String seatNumber;
 
     @OneToOne(mappedBy = "seat", cascade = CascadeType.ALL)
