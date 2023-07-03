@@ -19,4 +19,5 @@ public class Airport extends BaseEntity{
     private Set<Flight> arrivalFlights;
 
     private  String name;
+
 }

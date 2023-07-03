@@ -1,22 +1,20 @@
 package com.airbook.flightsreservationproject.models;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
-//@Entity
-//@Data
-//@NoArgsConstructor
 @MappedSuperclass
+@Data
 public class BaseEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
 }

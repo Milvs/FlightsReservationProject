@@ -1,8 +1,6 @@
 package com.airbook.flightsreservationproject.models;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -28,4 +26,18 @@ public class Airline extends BaseEntity{
         this.city = city;
         this.airline_code = airline_code;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "flights=" + flights +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", airline_code='" + airline_code + '\'' +
+                '}';}
 }
