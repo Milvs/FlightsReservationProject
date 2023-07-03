@@ -2,9 +2,13 @@ package com.airbook.flightsreservationproject.service;
 
 
 import com.airbook.flightsreservationproject.models.Airline;
+import com.airbook.flightsreservationproject.models.Airport;
 import com.airbook.flightsreservationproject.repository.AirlineRepo;
+import com.airbook.flightsreservationproject.repository.AirportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 
 @Service
@@ -13,10 +17,12 @@ public class AirlineService {
     @Autowired
     public AirlineRepo airlineRepo;
 
+    @Transactional
     public void invoke(){
-        airlineRepo.create();
+        Airline airline = new Airline("Bulgaria Air", "Bulgaria", "Sofia", "BG-75");
+        airlineRepo.create(airline);
        for (Airline a: airlineRepo.findAll()) {
-           System.out.println(a.getName());
+           System.out.println(a.toString());
 
        }
 

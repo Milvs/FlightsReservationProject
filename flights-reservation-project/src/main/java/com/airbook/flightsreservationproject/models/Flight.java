@@ -63,17 +63,28 @@ public class Flight extends BaseEntity {
         return arrivalAirport;
     }
 
+    public Flight(Airline airline, Airport departureAirport, Airport arrivalAirport, Seat seat,
+                  Booking booking, String flightCode, LocalDateTime departureTime,
+                  LocalDateTime arrivalTime) {
+        this.airline = airline;
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
+        this.seat = seat;
+        this.booking = booking;
+        this.flightCode = flightCode;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+    }
+
     @Override
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Flight{ id = ").append(getId());
-        sb.append("flightCode = ").append(getFlightCode());
+        sb.append("Flight { flightCode = ").append(getFlightCode());
         sb.append(", departureTime = ").append(getDepartureTime());
         sb.append(", arrivalTime = ").append(getArrivalTime());
         sb.append(", departureAirport = ").append(getDepartureAirport());
         sb.append(", arrivalAirport = ").append(getArrivalAirport());
-
         sb.append(" }");
         return sb.toString();
     }
