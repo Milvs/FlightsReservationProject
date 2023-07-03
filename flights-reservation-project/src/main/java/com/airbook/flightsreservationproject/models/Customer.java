@@ -9,7 +9,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "customers")
-@Data @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class Customer extends BaseEntity {
 
 

@@ -19,8 +19,9 @@ public class AirlineService {
 
     @Transactional
     public void invoke(){
-        Airline airline = new Airline("Bulgaria Air", "Bulgaria", "Sofia", "BG-75");
-        airlineRepo.create(airline);
+//        Airline airline = new Airline("ds", "Germany", "Cologne", "LHA-33");
+//        airlineRepo.create(airline);
+        airlineRepo.delete(14L);
        for (Airline a: airlineRepo.findAll()) {
            System.out.println(a.toString());
 

@@ -14,8 +14,11 @@ public class AirportService {
 
     @Transactional
     public void invoke() {
-        Airport airport = new Airport("London Heathrow Airport");
-        airportRepo.create(airport);
+        for (Airport a: airportRepo.findAll()
+             ) {
+            System.out.println(a);
+
+        }
 
     }
 }

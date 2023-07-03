@@ -1,5 +1,6 @@
 package com.airbook.flightsreservationproject.repository;
 
+import com.airbook.flightsreservationproject.models.Airline;
 import com.airbook.flightsreservationproject.models.Airport;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +12,6 @@ public class AirportRepo extends BaseRepo<Airport>{
     public String getEntityName() {
         return Airport.class.getSimpleName();
     }
+
+
 }

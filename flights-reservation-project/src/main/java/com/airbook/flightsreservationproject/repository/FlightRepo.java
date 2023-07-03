@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public class FlightRepo extends  BaseRepo<Flight>{
     @Override
     public String getEntityName() {
-        return null;
+        return Flight.class.getSimpleName();
     }
 }

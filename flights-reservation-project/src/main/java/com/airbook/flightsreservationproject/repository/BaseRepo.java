@@ -1,12 +1,14 @@
 package com.airbook.flightsreservationproject.repository;
 
 import com.airbook.flightsreservationproject.models.Airline;
+import com.airbook.flightsreservationproject.models.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 import java.util.List;
@@ -32,25 +34,30 @@ public abstract class BaseRepo<T> {
             em.persist(baseEntity);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             em.close();
         }
     }
 
     @Transactional
-    public void delete(long id) {
+    public void delete(Long id) {
 //        EntityManager em = entityManagerFactory.createEntityManager();
         try {
-            em.createQuery("DELETE FROM airlines WHERE id = :id").setParameter("id", id).executeUpdate();
+            String jpql = "delete from "+ getEntityName()  ;
+            em.createQuery(jpql + " where id = :id")
+                    .setParameter("id",id)
+                    .executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             em.close();
         }
     }
 
-    public List<Airline> findAll() {
+    @Transactional
+    public List<T> findAll() {
         return em.createQuery("from " + getEntityName()).getResultList();
+
     }
 
 

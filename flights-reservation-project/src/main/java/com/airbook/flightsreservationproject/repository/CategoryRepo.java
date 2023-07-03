@@ -4,7 +4,6 @@ import com.airbook.flightsreservationproject.models.Category;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
 public class CategoryRepo extends BaseRepo<Category>{
     @Override
     public String getEntityName() {

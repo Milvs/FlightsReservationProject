@@ -8,14 +8,18 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class FlightsReservationProjectApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(FlightsReservationProjectApplication.class, args);
-		AirportService s = context.getBean(AirportService.class);
-		s.invoke();
+		SpringApplication.run(FlightsReservationProjectApplication.class, args);
+//		ApplicationContext context = SpringApplication.run(FlightsReservationProjectApplication.class, args);
+////		AirportService s = context.getBean(AirportService.class);
+//		AirlineService s = context.getBean(AirlineService.class);
+//		s.invoke();
 
 
 	}
