@@ -16,10 +16,6 @@ import java.util.List;
 @Repository
 public abstract class BaseRepo<T> {
 
-//    @PersistenceUnit
-//    @Autowired
-//    private EntityManagerFactory entityManagerFactory;
-
     @PersistenceContext
     @Autowired
     private EntityManager em; // ем прави транзакциите
@@ -28,9 +24,7 @@ public abstract class BaseRepo<T> {
 
     @Transactional
     public void create(T baseEntity) {
-//       EntityManager em = entityManagerFactory.createEntityManager();
         try {
-            //Airline airline = new Airline("Bulgaria Air", "Bulgaria", "Sofia", "BG-75");
             em.persist(baseEntity);
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,7 +35,6 @@ public abstract class BaseRepo<T> {
 
     @Transactional
     public void delete(Long id) {
-//        EntityManager em = entityManagerFactory.createEntityManager();
         try {
             String jpql = "delete from "+ getEntityName()  ;
             em.createQuery(jpql + " where id = :id")

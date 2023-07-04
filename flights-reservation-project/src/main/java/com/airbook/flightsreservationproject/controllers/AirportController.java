@@ -4,10 +4,7 @@ import com.airbook.flightsreservationproject.models.Airport;
 import com.airbook.flightsreservationproject.repository.AirportRepo;
 import com.airbook.flightsreservationproject.service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,17 +15,18 @@ public class AirportController {
 
     @Autowired
     public AirportService airportService;
-@Autowired AirportRepo airportRepo;
 
-    @RequestMapping(value = "/airports",method = RequestMethod.POST)
-    public void createAirport(@RequestBody Airport airport){
-        airportService.airportRepo.create(airport);
-
+    @RequestMapping(value = "/airports", method = RequestMethod.POST)
+    public void createAirport(@RequestBody Airport airport) {
+        airportService.createAirport(airport);
     }
 
-    @RequestMapping(value = "/airports",method = RequestMethod.GET)
-    public List<Airport> readAirports(){
-        return airportRepo.findAll();
-
+    @RequestMapping(value = "/airports", method = RequestMethod.GET)
+    public List<Airport> readAllAirports() {
+        return airportService.readAllAirports();
+    }
+    @RequestMapping(value = "/airports/{id}", method = RequestMethod.DELETE)
+    public void deleteAirportById(@PathVariable long id) {
+        airportService.deleteAirportById(id);
     }
 }

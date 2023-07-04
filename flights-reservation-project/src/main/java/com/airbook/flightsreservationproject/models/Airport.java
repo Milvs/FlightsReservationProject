@@ -18,10 +18,17 @@ public class Airport extends BaseEntity{
     @OneToMany(mappedBy = "arrivalAirport", cascade = CascadeType.ALL)
     private Set<Flight> arrivalFlights;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     private  String name;
 
     public Airport(String name) {
-
         this.name = name;
     }
 }

@@ -17,8 +17,8 @@ public class FlightsReservationProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FlightsReservationProjectApplication.class, args);
 //		ApplicationContext context = SpringApplication.run(FlightsReservationProjectApplication.class, args);
-////		AirportService s = context.getBean(AirportService.class);
-//		AirlineService s = context.getBean(AirlineService.class);
+//		AirportService s = context.getBean(AirportService.class);
+////		AirlineService s = context.getBean(AirlineService.class);
 //		s.invoke();
 
 
