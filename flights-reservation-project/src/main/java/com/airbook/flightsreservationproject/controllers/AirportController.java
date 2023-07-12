@@ -1,5 +1,6 @@
 package com.airbook.flightsreservationproject.controllers;
 
+import com.airbook.flightsreservationproject.dto.AirportDTO;
 import com.airbook.flightsreservationproject.models.Airport;
 import com.airbook.flightsreservationproject.repository.AirportRepo;
 import com.airbook.flightsreservationproject.service.AirportService;
@@ -17,14 +18,15 @@ public class AirportController {
     public AirportService airportService;
 
     @RequestMapping(value = "/airports", method = RequestMethod.POST)
-    public void createAirport(@RequestBody Airport airport) {
+    public void createAirport(@RequestBody AirportDTO airport) {
         airportService.createAirport(airport);
     }
 
     @RequestMapping(value = "/airports", method = RequestMethod.GET)
-    public List<Airport> readAllAirports() {
+    public List<AirportDTO> readAllAirports() {
         return airportService.readAllAirports();
     }
+
     @RequestMapping(value = "/airports/{id}", method = RequestMethod.DELETE)
     public void deleteAirportById(@PathVariable long id) {
         airportService.deleteAirportById(id);

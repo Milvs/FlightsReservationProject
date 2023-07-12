@@ -8,15 +8,21 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
 @NoArgsConstructor
 @Table(name = "flights")
 public class Flight extends BaseEntity {
 
-    public Flight(Airline airline, Airport departureAirport, Airport arrivalAirport) {
+    public Flight(Airline airline, Airport departureAirport, Airport arrivalAirport,
+                  Seat seat, Booking booking, String flightCode,
+                  LocalDateTime departureTime, LocalDateTime arrivalTime) {
         this.airline = airline;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
+        this.seat = seat;
+        this.booking = booking;
+        this.flightCode = flightCode;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
     }
 
     @ManyToOne
@@ -43,6 +49,18 @@ public class Flight extends BaseEntity {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
 
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
     public String getFlightCode() {
         return flightCode;
     }
@@ -63,18 +81,7 @@ public class Flight extends BaseEntity {
         return arrivalAirport;
     }
 
-    public Flight(Airline airline, Airport departureAirport, Airport arrivalAirport, Seat seat,
-                  Booking booking, String flightCode, LocalDateTime departureTime,
-                  LocalDateTime arrivalTime) {
-        this.airline = airline;
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
-        this.seat = seat;
-        this.booking = booking;
-        this.flightCode = flightCode;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-    }
+
 
     @Override
     public String toString() {

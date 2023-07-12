@@ -1,31 +1,21 @@
-package com.airbook.flightsreservationproject.models;
-
-import lombok.Data;
-import lombok.Getter;
+package com.airbook.flightsreservationproject.dto;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
 @NoArgsConstructor
-@Table(name = "bookings")
-public class Booking extends BaseEntity{
-
-
-    @ManyToOne
-    @JoinColumn(name = "passenger_id")
-    private Passenger passenger;
-
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private Customer customer;
-
+public class BookingDTO {
 
     private double amount;
     private LocalDateTime paymentDate;
+    private PassengerDTO passenger;
 
+    public PassengerDTO getPassenger() {
+        return passenger;
+    }
+
+    public void setPassenger(PassengerDTO passenger) {
+        this.passenger = passenger;
+    }
 
     public double getAmount() {
         return amount;
@@ -42,5 +32,4 @@ public class Booking extends BaseEntity{
     public void setPaymentDate(LocalDateTime paymentDate) {
         this.paymentDate = paymentDate;
     }
-
 }

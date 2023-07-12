@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -17,29 +18,27 @@ public class AirlineService {
     @Autowired
     public AirlineRepo airlineRepo;
 
+    public void deleteAirlineById(long id){
+        airlineRepo.delete(id);
+
+    }
+    public Airline createAirline(Airline airline){
+        Airline createdAirline = new Airline(airline.getName(),airline.getCountry(),airline.getCity(),airline.getAirline_code());
+        airlineRepo.create(createdAirline);
+        return createdAirline;
+    }
+    public List<Airline> readAllAirlines(){
+        return airlineRepo.findAll();
+    }
+
     @Transactional
     public void invoke(){
-//        Airline airline = new Airline("ds", "Germany", "Cologne", "LHA-33");
-//        airlineRepo.create(airline);
-        airlineRepo.delete(14L);
-       for (Airline a: airlineRepo.findAll()) {
-           System.out.println(a.toString());
 
-       }
 
     }
 
 
-//    @Autowired
-//    private AirlineRepository airlineRepository;
-//
-//    @PostConstruct
-//    public void saveRecords() {
-//        if (airlineRepository.findAll().size() == 0) {
-//            airlineRepository.save(new Airline("Bulgaria Air", "Bulgaria", "Sofia", "SF-12"));
-//            airlineRepository.save(new Airline("Turkish Airlines", "Turkey", "Istanbul", "TR-72"));
-//        }
-//    }
+
 
 
 }

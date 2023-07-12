@@ -2,6 +2,7 @@ package com.airbook.flightsreservationproject.repository;
 
 import com.airbook.flightsreservationproject.models.Airline;
 import com.airbook.flightsreservationproject.models.Airport;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +30,7 @@ public abstract class BaseRepo<T> {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            System.out.println("Successfully added!");
             em.close();
         }
     }
@@ -43,6 +45,7 @@ public abstract class BaseRepo<T> {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            System.out.println("Successfully deleted!");
             em.close();
         }
     }

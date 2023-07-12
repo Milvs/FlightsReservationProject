@@ -1,17 +1,18 @@
 package com.airbook.flightsreservationproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
-@EqualsAndHashCode(callSuper = false)
+
 @NoArgsConstructor
 @Table(name = "airlines")
 public class Airline extends BaseEntity{
 
+    @JsonIgnore
     @OneToMany(mappedBy = "airline", cascade = CascadeType.ALL)
     private Set<Flight> flights;
 
@@ -29,6 +30,34 @@ public class Airline extends BaseEntity{
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAirline_code() {
+        return airline_code;
+    }
+
+    public void setAirline_code(String airline_code) {
+        this.airline_code = airline_code;
     }
 
     @Override
